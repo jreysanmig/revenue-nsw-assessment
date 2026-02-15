@@ -1,52 +1,40 @@
 import { expect } from '@playwright/test'
-import { createBdd, DataTable } from 'playwright-bdd'
-const { Given, When, Then } = createBdd()
+import { DataTable } from 'playwright-bdd'
+import { Given, When, Then } from './fixtures'
 
-// PAGES
-import { CheckMVStampDutyPage } from '../pages/CheckMVStampDutyPage'
-import { MVRegDutyCalculatorPage } from '../pages/MVRegDutyCalculatorPage'
-
-Given('I open the motor vehicle stamp duty page', async({page}) => {
-    const checkMVStampDutyPage = new CheckMVStampDutyPage(page)
-    await checkMVStampDutyPage.navigate()
+Given('I open the motor vehicle stamp duty page', async({onPage}) => {
+    await onPage.checkMVStampDutyPage.navigate()
 })
 
-When('I click Check online', async({page}) => {
-    const checkMVStampDutyPage = new CheckMVStampDutyPage(page)
-    await checkMVStampDutyPage.checkOnlineBtn.click()
+When('I click Check online', async({onPage}) => {
+    await onPage.checkMVStampDutyPage.checkOnlineBtn.click()
 })
 
-Then('I should see Motor vehicle reqistration duty calculator', async({page}) => {
-    const mvDutyCalculatorPage = new MVRegDutyCalculatorPage(page)
-    await expect(mvDutyCalculatorPage.header).toBeVisible()
+Then('I should see Motor vehicle reqistration duty calculator', async({onPage}) => {
+    await expect(onPage.mvRegDutyCalculatorPage.header).toBeVisible()
 })
 
-When('I calculate with the following details', async({page}, data: DataTable) => {
-    const mvDutyCalculatorPage = new MVRegDutyCalculatorPage(page)
-    await mvDutyCalculatorPage.isPassengerVehicle(data.rowsHash()['Is this registration for a passenger vehicle?']).click({force: true})
-    await mvDutyCalculatorPage.purchasePrice.fill(data.rowsHash()['Purchase price or value'])
-    await mvDutyCalculatorPage.calculateBtn.click()
+When('I calculate with the following details', async({onPage}, data: DataTable) => {
+    await onPage.mvRegDutyCalculatorPage.isPassengerVehicle(data.rowsHash()['Is this registration for a passenger vehicle?']).click({force: true})
+    await onPage.mvRegDutyCalculatorPage.purchasePrice.fill(data.rowsHash()['Purchase price or value'])
+    await onPage.mvRegDutyCalculatorPage.calculateBtn.click()
 })
 
-When('I select Yes for passenger vehicle', async({page}) => {
-    const mvDutyCalculatorPage = new MVRegDutyCalculatorPage(page)
-    await mvDutyCalculatorPage.isPassengerVehicle('Yes').click()
+When('I select {string} for passenger vehicle', async({onPage}, value: string) => {
+    await onPage.mvRegDutyCalculatorPage.isPassengerVehicle(value).click()
 })
 
-When('I enter 45000 for purchase price or value', async({page}) => {
-    const mvDutyCalculatorPage = new MVRegDutyCalculatorPage(page)
-    await mvDutyCalculatorPage.purchasePrice.fill('45000')
+When('I enter {string} for purchase price or value', async({onPage}, value: string) => {
+    await onPage.mvRegDutyCalculatorPage.purchasePrice.fill(value)
 })
 
-When('I click Calculate button', async({page}) => {
-    const mvDutyCalculatorPage = new MVRegDutyCalculatorPage(page)
-    await mvDutyCalculatorPage.calculateBtn.click()
+When('I click Calculate button', async({onPage}) => {
+    await onPage.mvRegDutyCalculatorPage.calculateBtn.click()
 })
 
-Then('I should see the following details in the calculation popup', async({page}, data: DataTable) => {
-    const mvDutyCalculatorPage = new MVRegDutyCalculatorPage(page)
-    await expect(mvDutyCalculatorPage.calculationPopup).toBeVisible()
+Then('I should see the following details in the calculation popup', async({onPage}, data: DataTable) => {
+    await expect(onPage.mvRegDutyCalculatorPage.calculationPopup).toBeVisible()
     for (const [field, value] of Object.entries(data.rowsHash())) {
-        await expect(mvDutyCalculatorPage.calculationPopupField(field)).toContainText(value)
+        await expect(onPage.mvRegDutyCalculatorPage.calculationPopupField(field)).toContainText(value)
     }
 })

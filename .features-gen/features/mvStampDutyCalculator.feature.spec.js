@@ -1,24 +1,24 @@
 // Generated from: features\mvStampDutyCalculator.feature
-import { test } from "playwright-bdd";
+import { test } from "../../steps/fixtures.ts";
 
 test.describe('Motor Vehicle Stamp Duty Calculator', () => {
 
   test.describe('Calculate duty for motor Vehicle (isPassenger=<isPassengerVehicle>,purchase=<purchasePriceInput>|duty=<DutyAmount>)', () => {
 
-    test('Calculate duty for motor Vehicle (isPassenger=Yes,purchase=45000|duty=$1,350.00)', async ({ Given, When, Then, page }) => { 
-      await Given('I open the motor vehicle stamp duty page', null, { page }); 
-      await When('I click Check online', null, { page }); 
-      await Then('I should see Motor vehicle reqistration duty calculator', null, { page }); 
-      await When('I calculate with the following details', {"dataTable":{"rows":[{"cells":[{"value":"Is this registration for a passenger vehicle?"},{"value":"Yes"}]},{"cells":[{"value":"Purchase price or value"},{"value":"45000"}]}]}}, { page }); 
-      await Then('I should see the following details in the calculation popup', {"dataTable":{"rows":[{"cells":[{"value":"Is this registration for a passenger vehicle?"},{"value":"Yes"}]},{"cells":[{"value":"Purchase price or value"},{"value":"$45,000.00"}]},{"cells":[{"value":"Duty payable"},{"value":"$1,350.00"}]}]}}, { page }); 
+    test('Calculate duty for motor Vehicle (isPassenger=Yes,purchase=45000|duty=$1,350.00)', async ({ Given, When, Then, onPage }) => { 
+      await Given('I open the motor vehicle stamp duty page', null, { onPage }); 
+      await When('I click Check online', null, { onPage }); 
+      await Then('I should see Motor vehicle reqistration duty calculator', null, { onPage }); 
+      await When('I calculate with the following details', {"dataTable":{"rows":[{"cells":[{"value":"Is this registration for a passenger vehicle?"},{"value":"Yes"}]},{"cells":[{"value":"Purchase price or value"},{"value":"45000"}]}]}}, { onPage }); 
+      await Then('I should see the following details in the calculation popup', {"dataTable":{"rows":[{"cells":[{"value":"Is this registration for a passenger vehicle?"},{"value":"Yes"}]},{"cells":[{"value":"Purchase price or value"},{"value":"$45,000.00"}]},{"cells":[{"value":"Duty payable"},{"value":"$1,350.00"}]}]}}, { onPage }); 
     });
 
-    test('Calculate duty for motor Vehicle (isPassenger=No,purchase=25000|duty=$750.00)', async ({ Given, When, Then, page }) => { 
-      await Given('I open the motor vehicle stamp duty page', null, { page }); 
-      await When('I click Check online', null, { page }); 
-      await Then('I should see Motor vehicle reqistration duty calculator', null, { page }); 
-      await When('I calculate with the following details', {"dataTable":{"rows":[{"cells":[{"value":"Is this registration for a passenger vehicle?"},{"value":"No"}]},{"cells":[{"value":"Purchase price or value"},{"value":"25000"}]}]}}, { page }); 
-      await Then('I should see the following details in the calculation popup', {"dataTable":{"rows":[{"cells":[{"value":"Is this registration for a passenger vehicle?"},{"value":"No"}]},{"cells":[{"value":"Purchase price or value"},{"value":"$25,000.00"}]},{"cells":[{"value":"Duty payable"},{"value":"$750.00"}]}]}}, { page }); 
+    test('Calculate duty for motor Vehicle (isPassenger=No,purchase=25000|duty=$750.00)', async ({ Given, When, Then, onPage }) => { 
+      await Given('I open the motor vehicle stamp duty page', null, { onPage }); 
+      await When('I click Check online', null, { onPage }); 
+      await Then('I should see Motor vehicle reqistration duty calculator', null, { onPage }); 
+      await When('I calculate with the following details', {"dataTable":{"rows":[{"cells":[{"value":"Is this registration for a passenger vehicle?"},{"value":"No"}]},{"cells":[{"value":"Purchase price or value"},{"value":"25000"}]}]}}, { onPage }); 
+      await Then('I should see the following details in the calculation popup', {"dataTable":{"rows":[{"cells":[{"value":"Is this registration for a passenger vehicle?"},{"value":"No"}]},{"cells":[{"value":"Purchase price or value"},{"value":"$25,000.00"}]},{"cells":[{"value":"Duty payable"},{"value":"$750.00"}]}]}}, { onPage }); 
     });
 
   });
