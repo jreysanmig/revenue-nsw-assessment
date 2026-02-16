@@ -13,25 +13,25 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh 'npm ci'
+                sh 'npx playwright install --with-deps'
             }
         }
         stage('Run Playwright Tests') {
             steps {
-                sh 'npx playwright install --with-deps'
                 sh 'npx playwright test'
-            }
-        }
-        stage('Archive Test Results') {
-            steps {
-                junit 'playwright-report/*.xml'
-                archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
             }
         }
     }
 
     post {
         always {
+            publishHTML([
+                reportDir: 'playwright-report',
+                reportFiles: 'index.html',
+                reportName: 'Playwright Report',
+                alwaysLinkToLastBuild: true,
+                keepAll: true
+            ])
             cleanWs()
         }
     }
