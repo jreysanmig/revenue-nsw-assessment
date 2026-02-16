@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Run Playwright Tests') {
             steps {
-                bat 'npx playwright test'
+                bat 'npm run test'
             }
         }
     }
@@ -33,7 +33,6 @@ pipeline {
                 alwaysLinkToLastBuild: true,
                 keepAll: true
             ])
-            cleanWs()
         }
     }
 }
