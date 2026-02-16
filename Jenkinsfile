@@ -11,21 +11,6 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Setup Node.js') {
-            steps {
-                sh '''
-                if ! command -v node > /dev/null; then
-                  export NVM_DIR="$HOME/.nvm"
-                  if [ ! -s "$NVM_DIR/nvm.sh" ]; then
-                    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-                  fi
-                  . "$NVM_DIR/nvm.sh"
-                  nvm install 20
-                  nvm use 20
-                fi
-                '''
-            }
-        }
         stage('Install Dependencies') {
             steps {
                 sh 'npm ci'
