@@ -36,13 +36,13 @@ npm run test
 4. Run only GUI tests:
 ```
 
-npx playwright test features/@gui
+npm run test:gui
 
 ```
 5. Run only API tests:
 ```
 
-npx playwright test features/@api
+npm run test:api
 
 ```
 
