@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:20-bullseye'
+            args '-u root' // Ensures permissions for npm install
+        }
+    }
 
     environment {
         NODE_ENV = 'test'
