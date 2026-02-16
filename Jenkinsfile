@@ -1,4 +1,7 @@
 pipeline {
+    parameters {
+        choice(name: 'TESTS', choices: ['all', 'ui', 'api'], description: 'Select which tests to run: all, ui, or api')
+    }
     agent any
 
     environment {
@@ -19,7 +22,17 @@ pipeline {
         }
         stage('Run Playwright Tests') {
             steps {
-                bat 'npm run test'
+                script {
+                    def testCmd = ''
+                    if (params.TESTS == 'all') {
+                        testCmd = 'npm run test'
+                    } else if (params.TESTS == 'ui') {
+                        testCmd = 'npm run test:ui'
+                    } else if (params.TESTS == 'api') {
+                        testCmd = 'npm run test:api'
+                    }
+                    bat testCmd
+                }
             }
         }
     }
@@ -28,6 +41,7 @@ pipeline {
         always {
             script {
                 publishHTML(target: [
+                    allowMissing: false,
                     reportDir: 'playwright-report',
                     reportFiles: 'index.html',
                     reportName: 'Playwright Report',
