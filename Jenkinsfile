@@ -25,13 +25,13 @@ pipeline {
 
     post {
         always {
-            publishHTML(
+            publishHTML(target: [
                 reportDir: 'playwright-report',
                 reportFiles: 'index.html',
                 reportName: 'Playwright Report',
                 alwaysLinkToLastBuild: true,
                 keepAll: true
-            )
+            ])
             cleanWs()
         }
     }
