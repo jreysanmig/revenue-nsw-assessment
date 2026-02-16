@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test'
 import { DataTable } from 'playwright-bdd'
-import { Given, When, Then } from './fixtures'
+import { Given, When, Then } from './fixture-gui'
 
 Given('I open the motor vehicle stamp duty page', async({onPage}) => {
     await onPage.checkMVStampDutyPage.navigate()

@@ -13,8 +13,8 @@ import { defineBddConfig } from 'playwright-bdd'
  * See https://playwright.dev/docs/test-configuration.
  */
 const testDir = defineBddConfig({
-  features: 'features/*.feature',
-  steps: 'steps/*.ts'
+  features: 'features/**/*.feature',
+  steps: 'steps/**/*.ts'
 })
 
 export default defineConfig({

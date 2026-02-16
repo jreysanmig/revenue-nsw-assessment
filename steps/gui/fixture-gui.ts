@@ -1,6 +1,6 @@
 import { test as base, createBdd } from 'playwright-bdd'
-import { CheckMVStampDutyPage } from '../pages/CheckMVStampDutyPage'
-import { MVRegDutyCalculatorPage } from '../pages/MVRegDutyCalculatorPage'
+import { CheckMVStampDutyPage } from '../../pages/CheckMVStampDutyPage'
+import { MVRegDutyCalculatorPage } from '../../pages/MVRegDutyCalculatorPage'
 
 type Fixture = {
     onPage: {
