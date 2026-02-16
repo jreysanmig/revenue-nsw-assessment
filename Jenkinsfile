@@ -1,6 +1,6 @@
 pipeline {
     parameters {
-        choice(name: 'TESTS', choices: ['all', 'ui', 'api'], description: 'Select which tests to run: all, ui, or api')
+        choice(name: 'TESTS', choices: ['all', 'gui', 'api'], description: 'Select which tests to run: all, ui, or api')
     }
     agent any
 
@@ -26,8 +26,8 @@ pipeline {
                     def testCmd = ''
                     if (params.TESTS == 'all') {
                         testCmd = 'npm run test'
-                    } else if (params.TESTS == 'ui') {
-                        testCmd = 'npm run test:ui'
+                    } else if (params.TESTS == 'gui') {
+                        testCmd = 'npm run test:gui'
                     } else if (params.TESTS == 'api') {
                         testCmd = 'npm run test:api'
                     }
