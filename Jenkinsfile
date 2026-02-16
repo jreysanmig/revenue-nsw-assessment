@@ -26,13 +26,16 @@ pipeline {
 
     post {
         always {
-            publishHTML(target: [
-                reportDir: 'playwright-report',
-                reportFiles: 'index.html',
-                reportName: 'Playwright Report',
-                alwaysLinkToLastBuild: true,
-                keepAll: true
-            ])
+            script {
+                publishHTML(target: [
+                    reportDir: 'playwright-report',
+                    reportFiles: 'index.html',
+                    reportName: 'Playwright Report',
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true
+                ])
+            }
+            
         }
     }
 }
