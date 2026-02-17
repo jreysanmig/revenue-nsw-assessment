@@ -1,6 +1,6 @@
 # Revenue NSW Assessment
 
-This project automates testing for Revenue NSW using Playwright and Jenkins.
+This project contains Johnrey's deliverables for the Senior QA Engineer role assessment.
 
 ## Project Structure
 
