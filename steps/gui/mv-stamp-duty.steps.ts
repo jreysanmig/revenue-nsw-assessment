@@ -20,16 +20,21 @@ When('I calculate with the following details', async({onPage}, data: DataTable) 
     await onPage.mvRegDutyCalculatorPage.calculateBtn.click()
 })
 
-When('I select {string} for passenger vehicle', async({onPage}, value: string) => {
+When('I select for passenger vehicle {string}', async({onPage}, value: string) => {
     await onPage.mvRegDutyCalculatorPage.isPassengerVehicle(value).click()
 })
 
-When('I enter {string} for purchase price or value', async({onPage}, value: string) => {
+When('I enter purchase price or value {string}', async({onPage}, value: string) => {
     await onPage.mvRegDutyCalculatorPage.purchasePrice.fill(value)
 })
 
 When('I click Calculate button', async({onPage}) => {
     await onPage.mvRegDutyCalculatorPage.calculateBtn.click()
+})
+
+Then('I should see in the calculation popup {string} {string}', async({onPage}, field: string, value: string) => {
+    await expect(onPage.mvRegDutyCalculatorPage.calculationPopup).toBeVisible()
+    await expect(onPage.mvRegDutyCalculatorPage.calculationPopupField(field)).toContainText(value)
 })
 
 Then('I should see the following details in the calculation popup', async({onPage}, data: DataTable) => {
