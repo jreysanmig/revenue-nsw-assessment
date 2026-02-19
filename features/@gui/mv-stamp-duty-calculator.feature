@@ -1,6 +1,6 @@
 Feature: Motor Vehicle Stamp Duty Calculator
 
-Scenario Outline: Calculate duty for motor Vehicle (isPassenger=<isPassengerVehicle>,purchase=<purchasePriceInput>|duty=<DutyAmount>)
+Scenario Outline: Calculate duty for motor Vehicle (isPassenger=<isPassengerVehicle>,purchase=<purchasePriceInput>|duty=<dutyAmount>)
     Given I open the motor vehicle stamp duty page
     When I click Check online
     Then I should see Motor vehicle reqistration duty calculator
