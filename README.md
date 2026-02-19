@@ -19,32 +19,22 @@ This project contains Johnrey's deliverables for the Senior QA Engineer role ass
    ```
    npm install
    ```
-
-```
 2. Install Playwright browsers:
-```
-
-npx playwright install --with-deps
-
-```
+   ```
+   npx playwright install --with-deps
+   ```
 3. Run all tests:
-```
-
-npm run test
-
-```
+   ```
+   npm run test
+   ```
 4. Run only GUI tests:
-```
-
-npm run test:gui
-
-```
+   ```
+   npm run test:gui
+   ```
 5. Run only API tests:
-```
-
-npm run test:api
-
-```
+   ```
+   npm run test:api
+   ```
 
 ### In Jenkins
 - The pipeline is parameterized. Select `all`, `ui`, or `api` when starting the job to run the desired tests.
