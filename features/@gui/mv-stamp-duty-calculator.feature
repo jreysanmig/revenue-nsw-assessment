@@ -21,3 +21,4 @@ Scenario Outline: Calculate duty for motor Vehicle (isPassenger=<isPassengerVehi
      |isPassengerVehicle| purchasePriceInput | purchasePriceAmount | dutyAmount |
      | Yes              | 45000              | $45,000.00          | $1,350.00  |
      | No               | 25000              | $25,000.00          | $750.00    |
+     | No               | 25000              | $25,000.00          | $750.10    |

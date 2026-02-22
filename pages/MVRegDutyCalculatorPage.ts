@@ -8,6 +8,6 @@ export class MVRegDutyCalculatorPage {
         readonly purchasePrice: Locator = page.getByLabel('Purchase price or value '),
         readonly calculateBtn: Locator = page.getByRole('button', {name: 'Calculate'}),
         readonly calculationPopup: Locator = page.locator('.modal-content', {hasText: 'Calculation'}),
-        readonly calculationPopupField = (fieldName: string) => this.calculationPopup.locator('tbody tr', {hasText: fieldName})
+        readonly calculationPopupField = (fieldName: string) => this.calculationPopup.locator('tbody tr', {hasText: fieldName}).locator('td').nth(1)
     ) {}    
 }
