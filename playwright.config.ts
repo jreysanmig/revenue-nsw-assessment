@@ -39,8 +39,9 @@ export default defineConfig({
     trace: 'on',
     screenshot: 'on',
     launchOptions: {
-      args: ['--start-maximized'],
+      args: ['--start-fullscreen'],
     },
+    viewport: null,
     video: 'on',
   },
 
