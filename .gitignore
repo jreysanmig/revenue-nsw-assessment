@@ -7,4 +7,5 @@ node_modules/
 /playwright/.cache/
 /playwright/.auth/
 /.vscode/
-/.features-gen/
+.features-gen/
+.features-gen/features/@gui/mv-stamp-duty-calculator.feature.spec.js
